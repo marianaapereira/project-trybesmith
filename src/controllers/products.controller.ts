@@ -5,7 +5,7 @@ import productsService from '../services/products.service';
 import mapStatusHTTP from '../utils/mapStatusHttp.util';
 
 import { 
-  HTTP_OK_STATUS, 
+  HTTP_OK_STATUS, HTTP_CREATED_STATUS,
 } from '../consts/httpStatusCodes.consts';
 
 async function list(_req: Request, res: Response) {
@@ -18,6 +18,15 @@ async function list(_req: Request, res: Response) {
   res.status(HTTP_OK_STATUS).json(serviceResponse.data);
 }
 
+async function create(req: Request, res: Response) {
+  const { name, price, orderId } = req.body;
+
+  const product = await productsService.create({ name, price, orderId });
+
+  res.status(HTTP_CREATED_STATUS).json(product);
+}
+
 export default {
   list,
+  create,
 };
