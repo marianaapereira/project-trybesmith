@@ -6,10 +6,6 @@ import {
 
 const MIN_PARAMS_LENGTH = 3;
 
-// campo name é obrigatório 400: HTTP_BAD_REQUEST_STATUS
-// campo name deve ser do tipo string 422: HTTP_UNPROCESSABLE_ENTITY_STATUS
-// campo name deve ter mais de 2 caracteres 422
-
 const existenceValidation = (param: string) => (!param || param === '');
 
 const paramsExistenceValidation = (name: string, price: string) => {
