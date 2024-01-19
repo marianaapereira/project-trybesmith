@@ -1,4 +1,3 @@
-// orders.controller.test.ts
 import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -8,7 +7,7 @@ import { ServiceResponse } from '../../../src/types/ServiceResponse';
 
 chai.use(sinonChai);
 
-describe('OrdersController', function () {
+describe('Orders Controller', function () {
   const req: any = {};
   const res: any = {
     status: sinon.stub().returnsThis(),

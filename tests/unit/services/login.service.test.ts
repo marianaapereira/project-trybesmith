@@ -7,7 +7,7 @@ import loginService from '../../../src/services/login.service';
 
 chai.use(sinonChai);
 
-describe('login.service', () => {
+describe('Login Service', () => {
   describe('verifyLogin', () => {
     it('should return INVALID_DATA if username or password is missing', async () => {
       const result = await loginService.verifyLogin({ username: '', password: '' });

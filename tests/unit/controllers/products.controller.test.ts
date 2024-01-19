@@ -1,33 +1,44 @@
 import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import { Request, Response } from 'express';
-import productsController from '../../../src/controllers/products.controller';
 import productsService from '../../../src/services/products.service';
+import productsController from '../../../src/controllers/products.controller';
+import { ServiceResponse } from '../../../src/types/ServiceResponse';
+import { Product } from '../../../src/types/Product';
+import { ProductSequelizeModel } from '../../../src/database/models/product.model';
+// import { ProductSequelizeModel
+// } from '../../../src/database/models/product.model';
 
 chai.use(sinonChai);
 
-describe('ProductsController', function () {
-  const req = {} as Request;
-  const res = {} as Response;
+describe('OrdersController', function () {
+  const req: any = {};
+  const res: any = {
+    status: sinon.stub().returnsThis(),
+    json: sinon.stub(),
+  };
 
   beforeEach(function () {
-    res.status = sinon.stub().returns(res);
-    res.json = sinon.stub().returns(res);
     sinon.restore();
   });
 
-  describe('create', function () {
-    it('should create a product and return it with a 201 status', async function () {
-      req.body = { name: 'Product 1', price: 19.99, orderId: 1 };
+  describe('list', function () {
+    it('should return error message if service response is not successful', async function () {
+      const serviceResponse: ServiceResponse<Array<{
+        id: number;
+        userId: number;
+        productIds: number[];
+      }>> = {
+        status: 'NOT_FOUND',
+        data: { message: 'Error message' },
+      };
 
-      const productData = { id: 1, name: 'Product 1', price: 19.99, orderId: 1 };
-      sinon.stub(productsService, 'create').resolves(productData);
+      sinon.stub(productsService, 'list').resolves(serviceResponse);
 
-      await productsController.create(req, res);
+      await productsController.list(req, res);
 
-      expect(res.status).to.be.calledWith(201);
-      expect(res.json).to.be.calledWith(productData);
+      expect(res.status).to.have.been.calledWith();
+      expect(res.json).to.have.been.calledWith(serviceResponse.data);
     });
   });
 });
