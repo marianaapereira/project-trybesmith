@@ -8,7 +8,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 - quais arquivos/pastas foram desenvolvidos pela Trybe.
 -->
 
-# Trybesmith
+# Trybesmith [![wakatime](https://wakatime.com/badge/user/d430e1a8-f726-4da0-96fd-ac14f7a37701/project/018b81bd-99df-4c9f-98c7-afbf892f6d3c.svg)](https://wakatime.com/badge/user/d430e1a8-f726-4da0-96fd-ac14f7a37701/project/018b81bd-99df-4c9f-98c7-afbf892f6d3c)
 
 Projeto para loja de itens medievais feitos por encomenda, no formato de API.
 
